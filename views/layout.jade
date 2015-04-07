@@ -1,0 +1,60 @@
+doctype html
+html(lang='zh-cn')
+    head
+        title Gallery
+        meta(http-equiv='content-type' content='text/html; charset=UTF-8')
+        meta(http-equiv='X-UA-Compatible' content='IE=edge;chrome=1')
+        meta(name='keywords' content='科技,斯墨,信息')
+        meta(name='description' content='云同步显示')
+        meta(name='author' content='synorme,上海斯墨信息科技有限公司')
+        meta(name='viewport' content='width=device-width,initial-scale=1')
+        link(rel='shortcut icon' href='/img/64x64.ico')
+        link(rel='stylesheet' href='/bower_components/angular-material/angular-material.min.css')
+        link(rel='stylesheet' href='/bower_components/photoswipe/dist/photoswipe.css')
+        link(rel='stylesheet' href='/bower_components/photoswipe/dist/default-skin/default-skin.css')
+        link(rel='stylesheet' href='/css/theme.css')
+        script(src='/bower_components/angular/angular.js')
+        script(src='/bower_components/angular-animate/angular-animate.js')
+        script(src='/bower_components/angular-aria/angular-aria.js')
+        script(src='/bower_components/angular-material/angular-material.js')
+        script(src='/bower_components/socket.io/socket.io.js')
+        script(src='/bower_components/photoswipe/dist/photoswipe.js')
+        script(src='/bower_components/photoswipe/dist/photoswipe-ui-default.js')
+    body(ng-app='syn-gallery' ng-init='isLogin=#{isLogin};items=#{items};storage=#{storage}')
+        div(layout='column' layout-fill)
+            md-toolbar.md-accent.md-hue-2
+                h2.md-toolbar-tools Gallery
+            md-content(flex layout-fill ng-if='!$root.isLogin' ng-controller='loginCtrl')
+                #login(layout='column' layout-align='center center' layout-fill)
+                    h4 空间已使用：{{storage}} MB
+                    md-input-container
+                        label 用户
+                        input(ng-model='user.name')
+                    md-input-container
+                        label 密码
+                        input(ng-model='user.password' type='password')
+                    section
+                        md-button.md-raised.md-primary(ng-click='login()') 确认
+            md-content(flex layout-fill ng-if='$root.isLogin' ng-controller='galleryCtrl' ng-cloak)
+                .pswp.fade
+                    .pswp__bg
+                    .pswp__scroll-wrap
+                        .pswp__container
+                            .pswp__item
+                            .pswp__item
+                            .pswp__item
+                        .pswp__ui.pswp__ui--hidden
+                            .pswp__top-bar
+                                .pswp__counter
+                                button.pswp__button.pswp__button--close(title='close')
+                                button.pswp__button.pswp__button--fs(title='fullscreen')
+                                button.pswp__button.pswp__button--zoom(title='zoom')
+                                .pswp__preloader
+                                    .pswp__preloader__icn
+                                        .pswp__preloader__cut
+                                            .pswp__preloader__donut
+                            button.pswp__button.pswp__button--arrow--left(title='prev')
+                            button.pswp__button.pswp__button--arrow--right(title='next')
+                            .pswp__caption
+                                .pswp__caption__center
+        script(src='/js/app.js')

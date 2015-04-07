@@ -73,3 +73,15 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+
+# bower
+/bower_components
+
+# database
+/database
+
+# image
+/public/img
+
+# config
+config.*
