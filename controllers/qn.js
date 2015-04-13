@@ -16,6 +16,7 @@ exports.down = function(req, res, io, db) {
             src: policy.makeRequest(baseUrl),
             w: req.body.w || '1920',
             h: req.body.h || '1080',
+            cost:req.body.cost,
             timestamp: Date.now(),
         };
         db.update({
