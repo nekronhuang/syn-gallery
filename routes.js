@@ -7,7 +7,7 @@ module.exports = function(app, io, db) {
             db.find({}, {
                 _id: 0
             }).sort({
-                timestamp: -1
+                timestamp: 1
             }).exec(function(err, docs) {
                 var storage, items = [];
                 for (var i = 0; i < docs.length; i++) {
@@ -56,7 +56,7 @@ module.exports = function(app, io, db) {
             }, {
                 _id: 0
             }).sort({
-                timestamp: -1
+                timestamp: 1
             }).exec(function(err, docs) {
                 if (docs.length == 0) {
                     docs.push({

@@ -31,16 +31,17 @@ app.controller('loginCtrl', function($rootScope, $scope, $http, $mdToast, $docum
 app.controller('galleryCtrl', function($rootScope, $scope, socket) {
     var gallery;
     socket.on('message', function(data) {
-        gallery.items.unshift(data);
+        gallery.items.push(data);
         gallery.invalidateCurrItems();
         gallery.updateSize(true);
-        gallery.goTo(0);
+        gallery.goTo(gallery.items.length - 1);
         gallery.ui.update();
     });
     var items = $rootScope.items,
         el = document.querySelectorAll('.pswp')[0],
         options = {
             history: false,
+            index: items.length - 1,
             focus: false,
             escKey: false,
             closeOnScroll: false,
