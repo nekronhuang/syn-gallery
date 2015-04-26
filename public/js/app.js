@@ -50,7 +50,8 @@ app.controller('galleryCtrl', function($rootScope, $scope, socket) {
             closeElClasses: [],
             closeEl: false,
             showAnimationDuration: 0,
-            hideAnimationDuration: 0
+            hideAnimationDuration: 0,
+            scaleMode:'orig'
         };
     gallery = new PhotoSwipe(el, PhotoSwipeUI_Default, items, options);
     gallery.init();
